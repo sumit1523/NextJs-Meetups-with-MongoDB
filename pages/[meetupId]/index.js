@@ -42,8 +42,9 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
 	const meetupId = context.params.meetupId;
-	const client = await MongoClient.connect(
-		'mongodb+srv://sumit1523:GO.clear@1523@cluster0.zmhg6.mongodb.net/meetups?retryWrites=true&w=majority'
+	const client = await new MongoClient.connect(
+		'mongodb+srv://sumit1523:GO.clear@1523@cluster0.zmhg6.mongodb.net/meetups?retryWrites=true&w=majority',
+		{ useNewUrlParser: true, useUnifiedTopology: true }
 	);
 	const db = client.db();
 	const meetupCollection = db.collection('meetups');
