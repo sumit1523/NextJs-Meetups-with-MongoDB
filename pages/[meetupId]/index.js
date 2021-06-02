@@ -12,19 +12,20 @@ const MeetupDetails = (props) => {
 					content={props.meetupData.description}
 				/>
 			</Head>
-		<MeetupDetail
-			title={props.meetupData.title}
-			image={props.meetupData.image}
-			address={props.meetupData.address}
-			description={props.meetupData.description}
-		/>
+			<MeetupDetail
+				title={props.meetupData.title}
+				image={props.meetupData.image}
+				address={props.meetupData.address}
+				description={props.meetupData.description}
+			/>
 		</>
 	);
 };
 
 export const getStaticPaths = async () => {
 	const client = await MongoClient.connect(
-		'mongodb+srv://sumit1523:GO.clear@1523@cluster0.zmhg6.mongodb.net/meetups?retryWrites=true&w=majority'
+		'mongodb+srv://sumit1523:GO.clear@1523@cluster0.zmhg6.mongodb.net/meetups?retryWrites=true&w=majority',
+		{ useUnifiedTopology: true }
 	);
 	const db = client.db();
 	const meetupCollection = db.collection('meetups');
@@ -44,7 +45,7 @@ export const getStaticProps = async (context) => {
 	const meetupId = context.params.meetupId;
 	const client = await new MongoClient.connect(
 		'mongodb+srv://sumit1523:GO.clear@1523@cluster0.zmhg6.mongodb.net/meetups?retryWrites=true&w=majority',
-		{ useNewUrlParser: true, useUnifiedTopology: true }
+		{ useUnifiedTopology: true }
 	);
 	const db = client.db();
 	const meetupCollection = db.collection('meetups');

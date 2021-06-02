@@ -11,7 +11,7 @@ const Homepage = (props) => {
 	return (
 		<>
 			<Head>
-				<title>React Meetups</title>
+				<title>Next Js Meetups</title>
 				<meta
 					name="description"
 					content="Add your own meetups and create amazing networls"
@@ -37,7 +37,7 @@ export const getStaticProps = async () => {
 	// fetch data from an API
 	const client = await new MongoClient.connect(
 		'mongodb+srv://sumit1523:GO.clear@1523@cluster0.zmhg6.mongodb.net/meetups?retryWrites=true&w=majority',
-		{ useNewUrlParser: true, useUnifiedTopology: true }
+		{ useUnifiedTopology: true }
 	);
 	const db = client.db();
 	const meetupCollection = db.collection('meetups');
